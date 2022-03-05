@@ -2989,6 +2989,27 @@ metadata:
     app.kubernetes.io/name: argocd-cm
     app.kubernetes.io/part-of: argocd
   name: argocd-cm
+# EDITED HERE
+data:
+  resource.customizations.actions.dummy.com_Migration: |
+    discovery.lua: |
+      actions = {}
+      actions["lower"] = {}
+      actions["increase"] = {}
+
+      return actions
+
+    definitions:
+    - name: lower
+      action.lua: |
+        local currPercentage = obj.spec.destination.percentage
+        obj.spec.destination.percentage = currPercentage - 10
+        return obj
+    - name: increase
+      action.lua: |
+        local currPercentage = obj.spec.destination.percentage
+        obj.spec.destination.percentage = currPercentage + 10
+        return obj
 ---
 apiVersion: v1
 kind: ConfigMap
