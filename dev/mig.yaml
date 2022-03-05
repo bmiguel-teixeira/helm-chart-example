@@ -1,0 +1,15 @@
+apiVersion: dummy.com/v1alpha1
+kind: Migration
+metadata:
+  labels:
+    app.kubernetes.io/instance: app
+    app.kubernetes.io/name: app
+  annotations:
+    argocd.argoproj.io/sync-options: "Prune=false"
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+  name: migration
+  namespace: app
+spec:
+  destination: 
+    url: google.com
+    percentage: 100
