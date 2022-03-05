@@ -58,6 +58,8 @@ spec:
                   percentage:
                     description: percentage of traffic
                     type: integer
+                    minimum: 0
+                    maximum: 100
                 type: object
             type: object
         type: object
