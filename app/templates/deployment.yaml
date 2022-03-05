@@ -28,7 +28,5 @@ spec:
             cpu: 5m
   strategy:
     canary:
-      canaryService: canary-demo-preview
-      steps:
-      - setWeight: 100
-      - pause: {}
+      maxSurge: 1
+      maxUnavailable: 1
